@@ -46,6 +46,18 @@ public class Driver {
                 switch statement will determine the case, and open the matching browser
             */
             switch (browserType){
+                         case "remote-chrome":
+                    try {
+                        // assign your grid server address
+                        String gridAddress = "54.160.69.233";
+                        URL url = new URL("http://" + gridAddress + ":4444/wd/hub");
+                        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+                        desiredCapabilities.setBrowserName("chrome");
+                        driver = new RemoteWebDriver(url, desiredCapabilities);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
                 case "chrome":
 
                     WebDriverManager.chromedriver().setup();
